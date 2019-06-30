@@ -18,17 +18,7 @@ docker-compose up  --build -d nginx mysql phpmyadmin redis workspace laravel-ech
 ```
 
 ```
-docker-compose exec  exec --user=laradock  workspace bash
-```
-
-You will be dropped into the workspace container console.
-
-<br>
-
-Then in workspace container console run:
-
-```
-art migrate
+docker-compose exec --user=laradock  workspace php artisan migrate
 ```
 
 project api url is `http://127.0.0.1:81/api/`
@@ -60,18 +50,5 @@ For start listening to the new messages in the room you can use the following co
 <h3>Run tests</h3>
 
 ```
-cd docker
-```
-
-```
-docker-compose exec --user=laradock  workspace bash
-```
-
-You will be dropped into the workspace container console.
-
-<br>
-
-Then in workspace container console run:
-```
-composer test
+cd docker && docker-compose exec --user=laradock  workspace composer test
 ```
