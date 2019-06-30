@@ -1,0 +1,9 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.js"></script>
+<script>
+    const socket = io('http://127.0.0.1:1030');
+    socket.emit('subscribe', {
+        channel: 'laravel_database_chat.1'
+    }).on('App\Events\Message', function (channel, data) {
+        console.log(data);
+    });
+</script>
