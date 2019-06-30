@@ -1,4 +1,4 @@
-<h1> be-challenge-2019</h1
+<h1> be-challenge-2019</h1>
 
 Docker settings located in `docker` folder
 <br>
