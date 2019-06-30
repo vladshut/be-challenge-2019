@@ -18,6 +18,10 @@ docker-compose up  --build -d nginx mysql phpmyadmin redis workspace laravel-ech
 ```
 
 ```
+docker-compose exec --user=laradock  workspace composer install
+```
+
+```
 docker-compose exec --user=laradock  workspace php artisan migrate
 ```
 
