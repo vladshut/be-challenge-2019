@@ -7,7 +7,7 @@ Source code is located in `src` folder
 <br>
 <hr>
 
-<h3>Start project<h3/>
+<h3>Start project</h3>
 
 ```
 cd docker
