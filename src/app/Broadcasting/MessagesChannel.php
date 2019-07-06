@@ -27,6 +27,5 @@ class MessagesChannel
     public function join(User $user, Room $room)
     {
         return true;
-        return $room->users()->has($user);
     }
 }

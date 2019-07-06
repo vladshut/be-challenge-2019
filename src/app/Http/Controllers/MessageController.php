@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MessageResource;
 use App\Message;
+use App\Services\BotService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -18,9 +19,10 @@ class MessageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param BotService $bot
      * @return MessageResource
      */
-    public function store(Request $request)
+    public function store(Request $request, BotService $bot)
     {
         $message = Message::create(
             [
@@ -31,6 +33,8 @@ class MessageController extends Controller
         );
 
         event(new \App\Events\Message($message));
+
+        $bot->handle($message);
 
         return response()->json(['result' => 'message successfully sent']);
     }
