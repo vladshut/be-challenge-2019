@@ -56,3 +56,18 @@ For start listening to the new messages in the room you can use the following co
 ```
 cd docker && docker-compose exec --user=laradock  workspace composer test
 ```
+
+<h3>Bot support</h3>
+In each room of the chat you can communicate with built-in bot. Just type `@bot Hi!` and receive reply from the bot.
+<br>
+Bot is built using Dialogflow service. It has some predefined intents:
+<br>
+<br>
+<b>Welcome</b>
+<br>
+```
+> @bot hi
+> Wassup bro!
+```
+<br>
+<br>
