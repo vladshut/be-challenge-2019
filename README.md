@@ -58,16 +58,102 @@ cd docker && docker-compose exec --user=laradock  workspace composer test
 ```
 
 <h3>Bot support</h3>
-In each room of the chat you can communicate with built-in bot. Just type `@bot Hi!` and receive reply from the bot.
+In each room of the chat you can communicate with built-in bot. Just type @bot Hi! and receive reply from the bot.
 <br>
 Bot is built using Dialogflow service. It has some predefined intents:
 <br>
 <br>
 <b>Welcome</b>
 <br>
+
+EN
+
 ```
 > @bot hi
 > Wassup bro!
 ```
+
+UK
+
+```
+> @bot привіт
+> драстє
+```
+
 <br>
 <br>
+
+<b>Today info</b> (using context)
+<br>
+
+EN
+
+```
+> @bot today info
+> 2019-07-07 Weather, holidays?
+
+> @bot weather 
+> 10 C rain
+
+> @bot holidays
+> Easter, Day of Medicine
+```
+
+
+UK
+
+```
+> @bot сьогодні інфо
+> 2019-07-07 Погода, свята?
+
+> @bot погода 
+> 16 С Похмуро
+
+> @bot свята
+> День молоді, 1 квітня, День бобра
+```
+<br>
+<br>
+
+
+<b>Switch language</b>
+<br>
+
+EN
+
+```
+> @bot switch lang
+> Ви обрали українську мову
+```
+
+UK
+
+```
+> @bot змінити мову
+> Language changed to English
+```
+
+<br>
+<br>
+
+<b>Fallback message</b>
+<br>
+
+EN
+
+```
+> @bot How many apples are on the table?
+> WTF?!
+```
+
+UK
+
+```
+> @bot Який там курс?
+> Що за ...?
+```
+
+<br>
+<br>
+
+
