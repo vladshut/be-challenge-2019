@@ -64,6 +64,7 @@ Bot is built using Dialogflow service. It has some predefined intents:
 <br>
 <br>
 <b>Welcome</b>
+
 <br>
 
 EN
@@ -78,6 +79,26 @@ UK
 ```
 > @bot привіт
 > драстє
+```
+
+<br>
+<br>
+
+<b>Fallback message</b>
+<br>
+
+EN
+
+```
+> @bot How many apples are on the table?
+> WTF?!
+```
+
+UK
+
+```
+> @bot Який там курс?
+> Що за ...?
 ```
 
 <br>
@@ -131,26 +152,6 @@ UK
 ```
 > @bot змінити мову
 > Language changed to English
-```
-
-<br>
-<br>
-
-<b>Fallback message</b>
-<br>
-
-EN
-
-```
-> @bot How many apples are on the table?
-> WTF?!
-```
-
-UK
-
-```
-> @bot Який там курс?
-> Що за ...?
 ```
 
 <br>
