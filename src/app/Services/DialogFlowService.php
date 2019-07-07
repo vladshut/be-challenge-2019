@@ -29,7 +29,7 @@ class DialogFlowService
         string $text,
         string $sessionId = null,
         string $languageCode = 'en-US'
-    ): string
+    ): QueryResult
     {
         $projectId = 'be-challenge-mwknnt';
 
@@ -53,6 +53,6 @@ class DialogFlowService
 
         $sessionsClient->close();
 
-        return $queryResult->getFulfillmentText();
+        return $queryResult;
     }
 }

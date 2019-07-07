@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property mixed creator_id
  * @property mixed message
  * @property mixed room_id
+ * @property User creator
  * @method static create(array $array)
  */
 class Message extends Model
@@ -19,6 +21,9 @@ class Message extends Model
         return $this->belongsTo(Room::class);
     }
 
+    /**
+     * @return BelongsTo|User
+     */
     public function creator()
     {
         return $this->belongsTo(User::class);

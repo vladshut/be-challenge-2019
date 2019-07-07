@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Message;
+use App\User;
 use Exception;
 
 class BotService
@@ -34,17 +35,19 @@ class BotService
             return false;
         }
 
-        $sessionId = self::KEYWORD . '::' . $message->creator_id;
+        $sessionId = self::KEYWORD . '::' . $message->room_id . '::' . $message->creator_id;
 
         try {
-            $replyText = $this->dialogFlowService->detectIntentText($message->message, $sessionId);
+            $queryResult = $this->dialogFlowService->detectIntentText($message->message, $sessionId, $message->creator->lang);
         } catch (Exception $exception) {
-            throw  $exception;
             return false;
         };
+        if ($queryResult->getIntent() && $queryResult->getIntent()->getDisplayName() === 'switch-lang') {
+            $message->creator->switchLang()->save();
+        }
 
         $reply = Message::create([
-            'message' => $replyText,
+            'message' => $queryResult->getFulfillmentText(),
             'room_id' => $message->room_id,
             'user_id' => null,
         ]);

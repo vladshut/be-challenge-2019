@@ -8,7 +8,9 @@ use App\Room;
 use App\Services\BotService;
 use App\Services\DialogFlowService;
 use Exception;
+use Google\Cloud\Dialogflow\V2\QueryResult;
 use Illuminate\Support\Arr;
+use Mockery;
 use Mockery\Mock;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -23,9 +25,14 @@ class BotTest extends TestCase
     {
         $replyText = 'Hello!';
 
-        $this->mock(DialogFlowService::class, function ($mock) use ($replyText) {
+        /** @var Mock $queryResultMock */
+        $queryResultMock = Mockery::mock(QueryResult::class);
+        $queryResultMock->shouldReceive('getFulfillmentText')->once()->andReturn($replyText);
+        $queryResultMock->shouldReceive('getIntent')->once()->andReturn(null);
+
+        $this->mock(DialogFlowService::class, function ($mock) use ($queryResultMock) {
             /** @var $mock Mock */
-            $mock->shouldReceive('detectIntentText')->once()->andReturn($replyText);
+            $mock->shouldReceive('detectIntentText')->once()->andReturn($queryResultMock);
         });
 
         $this->expectsEvents(MessageEvent::class);
