@@ -8,8 +8,10 @@
 
 namespace App\Services;
 
+use Google\Api\Context;
 use Google\ApiCore\ApiException;
 use Google\ApiCore\ValidationException;
+use Google\Cloud\Dialogflow\V2\ContextsClient;
 use Google\Cloud\Dialogflow\V2\QueryResult;
 use Google\Cloud\Dialogflow\V2\SessionsClient;
 use Google\Cloud\Dialogflow\V2\TextInput;
@@ -48,6 +50,7 @@ class DialogFlowService
         $queryInput->setText($textInput);
 
         // get response and relevant info
+        $response = $sessionsClient->detectIntent($session, $queryInput);
         $response = $sessionsClient->detectIntent($session, $queryInput);
         $queryResult = $response->getQueryResult();
 
